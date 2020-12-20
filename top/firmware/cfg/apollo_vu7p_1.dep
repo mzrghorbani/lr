@@ -1,0 +1,3 @@
+src ../ucf/apollo_vu7p_1.tcl
+include vivado_vu7p_1.dep
+include -c emp-fwk:boards/apollo/vu7p apollo.dep

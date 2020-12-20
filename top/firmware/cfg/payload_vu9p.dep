@@ -1,0 +1,11 @@
+src emp_payload.vhd 
+
+include -c kf:framework components.dep
+
+src -c kf:framework --cd ../cgn *.xci
+
+iprepo -c kf:updater HLS_IP_360MHz_VU9P
+
+src -c kf:updater --cd ../cgn KalmanUpdate_IP.xci
+
+include -c l1tf:common components.dep

@@ -1,0 +1,3 @@
+src ../ucf/mpultra.tcl
+include vivado_ku115.dep
+include -c emp-fwk:boards/mpultra mpultra.dep

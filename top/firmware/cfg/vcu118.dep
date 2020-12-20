@@ -1,0 +1,3 @@
+src ../ucf/vcu118.tcl
+include vivado_vu9p.dep
+include -c emp-fwk:boards/vcu118 vcu118.dep

@@ -1,0 +1,14 @@
+# For speed 1 grade chip on Apollo
+
+src emp_payload.vhd 
+
+include -c kf:framework components.dep
+
+src -c kf:framework --cd ../cgn *.xci
+
+# 320 MHz IP isn't capable of running at 320 MHz, so use 360 MHz IP instead.
+iprepo -c kf:updater HLS_IP_360MHz_VU7P_1
+
+src -c kf:updater --cd ../cgn KalmanUpdate_IP.xci
+
+include -c l1tf:common components.dep

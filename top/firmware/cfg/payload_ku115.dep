@@ -1,0 +1,12 @@
+src emp_payload.vhd 
+
+include -c kf:framework components.dep
+
+src -c kf:framework --cd ../cgn *.xci
+
+# Seem to need 360 MHz HLS core to run full KF at 320 MHz ...
+iprepo -c kf:updater HLS_IP_360MHz_KU115
+
+src -c kf:updater --cd ../cgn KalmanUpdate_IP.xci
+
+include -c l1tf:common components.dep

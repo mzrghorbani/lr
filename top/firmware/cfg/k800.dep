@@ -1,0 +1,3 @@
+src ../ucf/k800.tcl
+include vivado_ku115.dep
+include -c emp-fwk:boards/k800 k800.dep

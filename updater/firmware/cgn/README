@@ -1,0 +1,3 @@
+The LR-HLS IP core created with Vivado-HLS tool is unpacked here following the process described in the repository:
+
+	ssh://git@gitlab.cern.ch:7999/mghorban1/lr_hls_make_ip.git  

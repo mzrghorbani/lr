@@ -1,7 +1,7 @@
-Config_LR.vhd
-Stubs_LR.vhd
-Tracks_LR.vhd
-LinkFormatter_LR.vhd
-Top_LR.vhd
-Node_LR.vhd
-WorkerCallHLS_LR.vhd
+src Config_LR.vhd
+src Stubs_LR.vhd
+src Tracks_LR.vhd
+src LinkFormatter_LR.vhd
+src Top_LR.vhd
+src Node_LR.vhd
+src WorkerCallHLS_LR.vhd

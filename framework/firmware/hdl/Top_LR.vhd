@@ -35,7 +35,7 @@ gN: for WorkerID in 0 to LR_Workers - 1 generate
     LR_Node_din( 0 ) <= din( WorkerID );
     dout( 2 * WorkerID + 1  downto  2 * WorkerID ) <= LR_Node_dout;
 
-    c: entity work.node_LR generic map ( WorkerID ) port map ( clk, LR_Node_din, LR_Node_dout );
+    c: entity work.Node_LR generic map ( WorkerID ) port map ( clk, LR_Node_din, LR_Node_dout );
 
   end generate;
 

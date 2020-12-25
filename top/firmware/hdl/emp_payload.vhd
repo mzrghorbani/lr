@@ -33,7 +33,7 @@ architecture rtl of emp_payload is
 begin
 
 
-cKF: entity work.KalmanTop port map ( clk_p, d, q );
+cLR: entity work.Top_LR port map ( clk_p, d, q );
 
 gpio <= ( others => '0' );
 gpio_en <= ( others => '0' );

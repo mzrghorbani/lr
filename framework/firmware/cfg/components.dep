@@ -1,1 +1,7 @@
-# src <>.vhd
+Config_LR.vhd
+Stubs_LR.vhd
+Tracks_LR.vhd
+LinkFormatter_LR.vhd
+Top_LR.vhd
+Node_LR.vhd
+WorkerCallHLS_LR.vhd

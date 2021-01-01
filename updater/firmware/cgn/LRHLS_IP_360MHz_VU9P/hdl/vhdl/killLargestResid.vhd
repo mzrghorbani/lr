@@ -38,26 +38,26 @@ architecture behav of killLargestResid is
     constant ap_const_logic_0 : STD_LOGIC := '0';
 
     signal write_flag_fu_76_p10 : STD_LOGIC_VECTOR (0 downto 0);
-    signal xor_ln404_fu_230_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal xor_ln408_fu_230_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal write_flag4_fu_98_p10 : STD_LOGIC_VECTOR (0 downto 0);
-    signal xor_ln404_1_fu_242_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal xor_ln408_1_fu_242_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal write_flag8_fu_142_p10 : STD_LOGIC_VECTOR (0 downto 0);
-    signal xor_ln404_2_fu_254_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal xor_ln408_2_fu_254_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal write_flag2_fu_164_p10 : STD_LOGIC_VECTOR (0 downto 0);
-    signal xor_ln404_3_fu_266_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal xor_ln408_3_fu_266_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal write_flag5_fu_208_p10 : STD_LOGIC_VECTOR (0 downto 0);
-    signal xor_ln404_4_fu_278_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal xor_ln408_4_fu_278_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal write_flag3_fu_186_p10 : STD_LOGIC_VECTOR (0 downto 0);
-    signal xor_ln404_5_fu_290_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal xor_ln408_5_fu_290_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal write_flag1_fu_120_p10 : STD_LOGIC_VECTOR (0 downto 0);
-    signal xor_ln404_6_fu_302_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal and_ln404_fu_236_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal and_ln404_1_fu_248_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal and_ln404_2_fu_260_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal and_ln404_3_fu_272_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal and_ln404_4_fu_284_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal and_ln404_5_fu_296_p2 : STD_LOGIC_VECTOR (0 downto 0);
-    signal and_ln404_6_fu_308_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal xor_ln408_6_fu_302_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal and_ln408_fu_236_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal and_ln408_1_fu_248_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal and_ln408_2_fu_260_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal and_ln408_3_fu_272_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal and_ln408_4_fu_284_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal and_ln408_5_fu_296_p2 : STD_LOGIC_VECTOR (0 downto 0);
+    signal and_ln408_6_fu_308_p2 : STD_LOGIC_VECTOR (0 downto 0);
 
     component LRHLS_top_mux_83_1_1_1 IS
     generic (
@@ -89,7 +89,7 @@ architecture behav of killLargestResid is
 
 
 begin
-    LRHLS_top_mux_83_1_1_1_U309 : component LRHLS_top_mux_83_1_1_1
+    LRHLS_top_mux_83_1_1_1_U312 : component LRHLS_top_mux_83_1_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -115,7 +115,7 @@ begin
         din8 => LRHLS_largestResid_V_read,
         dout => write_flag_fu_76_p10);
 
-    LRHLS_top_mux_83_1_1_1_U310 : component LRHLS_top_mux_83_1_1_1
+    LRHLS_top_mux_83_1_1_1_U313 : component LRHLS_top_mux_83_1_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -141,7 +141,7 @@ begin
         din8 => LRHLS_largestResid_V_read,
         dout => write_flag4_fu_98_p10);
 
-    LRHLS_top_mux_83_1_1_1_U311 : component LRHLS_top_mux_83_1_1_1
+    LRHLS_top_mux_83_1_1_1_U314 : component LRHLS_top_mux_83_1_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -167,7 +167,7 @@ begin
         din8 => LRHLS_largestResid_V_read,
         dout => write_flag1_fu_120_p10);
 
-    LRHLS_top_mux_83_1_1_1_U312 : component LRHLS_top_mux_83_1_1_1
+    LRHLS_top_mux_83_1_1_1_U315 : component LRHLS_top_mux_83_1_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -193,7 +193,7 @@ begin
         din8 => LRHLS_largestResid_V_read,
         dout => write_flag8_fu_142_p10);
 
-    LRHLS_top_mux_83_1_1_1_U313 : component LRHLS_top_mux_83_1_1_1
+    LRHLS_top_mux_83_1_1_1_U316 : component LRHLS_top_mux_83_1_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -219,7 +219,7 @@ begin
         din8 => LRHLS_largestResid_V_read,
         dout => write_flag2_fu_164_p10);
 
-    LRHLS_top_mux_83_1_1_1_U314 : component LRHLS_top_mux_83_1_1_1
+    LRHLS_top_mux_83_1_1_1_U317 : component LRHLS_top_mux_83_1_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -245,7 +245,7 @@ begin
         din8 => LRHLS_largestResid_V_read,
         dout => write_flag3_fu_186_p10);
 
-    LRHLS_top_mux_83_1_1_1_U315 : component LRHLS_top_mux_83_1_1_1
+    LRHLS_top_mux_83_1_1_1_U318 : component LRHLS_top_mux_83_1_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -274,26 +274,26 @@ begin
 
 
 
-    and_ln404_1_fu_248_p2 <= (xor_ln404_1_fu_242_p2 and stubs_1_valid_V_read);
-    and_ln404_2_fu_260_p2 <= (xor_ln404_2_fu_254_p2 and stubs_2_valid_V_read);
-    and_ln404_3_fu_272_p2 <= (xor_ln404_3_fu_266_p2 and stubs_3_valid_V_read);
-    and_ln404_4_fu_284_p2 <= (xor_ln404_4_fu_278_p2 and stubs_4_valid_V_read);
-    and_ln404_5_fu_296_p2 <= (xor_ln404_5_fu_290_p2 and stubs_5_valid_V_read);
-    and_ln404_6_fu_308_p2 <= (xor_ln404_6_fu_302_p2 and stubs_6_valid_V_read);
-    and_ln404_fu_236_p2 <= (xor_ln404_fu_230_p2 and stubs_0_valid_V_read);
+    and_ln408_1_fu_248_p2 <= (xor_ln408_1_fu_242_p2 and stubs_1_valid_V_read);
+    and_ln408_2_fu_260_p2 <= (xor_ln408_2_fu_254_p2 and stubs_2_valid_V_read);
+    and_ln408_3_fu_272_p2 <= (xor_ln408_3_fu_266_p2 and stubs_3_valid_V_read);
+    and_ln408_4_fu_284_p2 <= (xor_ln408_4_fu_278_p2 and stubs_4_valid_V_read);
+    and_ln408_5_fu_296_p2 <= (xor_ln408_5_fu_290_p2 and stubs_5_valid_V_read);
+    and_ln408_6_fu_308_p2 <= (xor_ln408_6_fu_302_p2 and stubs_6_valid_V_read);
+    and_ln408_fu_236_p2 <= (xor_ln408_fu_230_p2 and stubs_0_valid_V_read);
     ap_ready <= ap_const_logic_1;
-    ap_return_0 <= and_ln404_fu_236_p2;
-    ap_return_1 <= and_ln404_1_fu_248_p2;
-    ap_return_2 <= and_ln404_2_fu_260_p2;
-    ap_return_3 <= and_ln404_3_fu_272_p2;
-    ap_return_4 <= and_ln404_4_fu_284_p2;
-    ap_return_5 <= and_ln404_5_fu_296_p2;
-    ap_return_6 <= and_ln404_6_fu_308_p2;
-    xor_ln404_1_fu_242_p2 <= (write_flag4_fu_98_p10 xor ap_const_lv1_1);
-    xor_ln404_2_fu_254_p2 <= (write_flag8_fu_142_p10 xor ap_const_lv1_1);
-    xor_ln404_3_fu_266_p2 <= (write_flag2_fu_164_p10 xor ap_const_lv1_1);
-    xor_ln404_4_fu_278_p2 <= (write_flag5_fu_208_p10 xor ap_const_lv1_1);
-    xor_ln404_5_fu_290_p2 <= (write_flag3_fu_186_p10 xor ap_const_lv1_1);
-    xor_ln404_6_fu_302_p2 <= (write_flag1_fu_120_p10 xor ap_const_lv1_1);
-    xor_ln404_fu_230_p2 <= (write_flag_fu_76_p10 xor ap_const_lv1_1);
+    ap_return_0 <= and_ln408_fu_236_p2;
+    ap_return_1 <= and_ln408_1_fu_248_p2;
+    ap_return_2 <= and_ln408_2_fu_260_p2;
+    ap_return_3 <= and_ln408_3_fu_272_p2;
+    ap_return_4 <= and_ln408_4_fu_284_p2;
+    ap_return_5 <= and_ln408_5_fu_296_p2;
+    ap_return_6 <= and_ln408_6_fu_308_p2;
+    xor_ln408_1_fu_242_p2 <= (write_flag4_fu_98_p10 xor ap_const_lv1_1);
+    xor_ln408_2_fu_254_p2 <= (write_flag8_fu_142_p10 xor ap_const_lv1_1);
+    xor_ln408_3_fu_266_p2 <= (write_flag2_fu_164_p10 xor ap_const_lv1_1);
+    xor_ln408_4_fu_278_p2 <= (write_flag5_fu_208_p10 xor ap_const_lv1_1);
+    xor_ln408_5_fu_290_p2 <= (write_flag3_fu_186_p10 xor ap_const_lv1_1);
+    xor_ln408_6_fu_302_p2 <= (write_flag1_fu_120_p10 xor ap_const_lv1_1);
+    xor_ln408_fu_230_p2 <= (write_flag_fu_76_p10 xor ap_const_lv1_1);
 end behav;

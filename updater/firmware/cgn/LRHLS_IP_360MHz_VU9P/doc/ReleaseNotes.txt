@@ -5,6 +5,6 @@
 
 Family       : virtexuplus
 Device       : xcvu9p
-Package      : -flgb2104
-Speed Grade  : -2-e
+Package      : -flga2104
+Speed Grade  : -2L-e
 Clock Period : 2.770 ns

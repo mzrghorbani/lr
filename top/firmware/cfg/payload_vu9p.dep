@@ -2,10 +2,10 @@ src emp_payload.vhd
 
 include -c lr:framework components.dep
 
-src -c lr:framework --cd ../cgn *.xci
+#src -c lr:framework --cd ../cgn *.xci
 
 iprepo -c lr:updater LRHLS_IP_360MHz_VU9P
 
-src -c lr:updater --cd ../cgn LRHLS_update_IP.xci
+src -c lr:updater --cd ../cgn LRHLS_IP.xci
 
 include -c l1tf:common components.dep

@@ -6,7 +6,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity LRHLS_top_mac_mulsub_18s_18s_37ns_37_1_0_DSP48_6 is
+entity LRHLS_top_mac_mulsub_18s_18s_37ns_37_1_0_DSP48_8 is
 port (
     in0:  in  std_logic_vector(18 - 1 downto 0);
     in1:  in  std_logic_vector(18 - 1 downto 0);
@@ -15,7 +15,7 @@ port (
 
 end entity;
 
-architecture behav of LRHLS_top_mac_mulsub_18s_18s_37ns_37_1_0_DSP48_6 is
+architecture behav of LRHLS_top_mac_mulsub_18s_18s_37ns_37_1_0_DSP48_8 is
     signal a       : signed(27-1 downto 0);
     signal b       : signed(18-1 downto 0);
     signal c       : signed(48-1 downto 0);
@@ -51,7 +51,7 @@ entity LRHLS_top_mac_mulsub_18s_18s_37ns_37_1_0 is
 end entity;
 
 architecture arch of LRHLS_top_mac_mulsub_18s_18s_37ns_37_1_0 is
-    component LRHLS_top_mac_mulsub_18s_18s_37ns_37_1_0_DSP48_6 is
+    component LRHLS_top_mac_mulsub_18s_18s_37ns_37_1_0_DSP48_8 is
         port (
             in0 : IN STD_LOGIC_VECTOR;
             in1 : IN STD_LOGIC_VECTOR;
@@ -62,7 +62,7 @@ architecture arch of LRHLS_top_mac_mulsub_18s_18s_37ns_37_1_0 is
 
 
 begin
-    LRHLS_top_mac_mulsub_18s_18s_37ns_37_1_0_DSP48_6_U :  component LRHLS_top_mac_mulsub_18s_18s_37ns_37_1_0_DSP48_6
+    LRHLS_top_mac_mulsub_18s_18s_37ns_37_1_0_DSP48_8_U :  component LRHLS_top_mac_mulsub_18s_18s_37ns_37_1_0_DSP48_8
     port map (
         in0 => din0,
         in1 => din1,

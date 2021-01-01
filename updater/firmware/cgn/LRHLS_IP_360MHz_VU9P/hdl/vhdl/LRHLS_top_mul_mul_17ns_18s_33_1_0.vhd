@@ -3,7 +3,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity LRHLS_top_mul_mul_17ns_18s_33_1_0_DSP48_10 is
+entity LRHLS_top_mul_mul_17ns_18s_33_1_0_DSP48_12 is
 port (
     a: in std_logic_vector(17 - 1 downto 0);
     b: in std_logic_vector(18 - 1 downto 0);
@@ -11,7 +11,7 @@ port (
 
 end entity;
 
-architecture behav of LRHLS_top_mul_mul_17ns_18s_33_1_0_DSP48_10 is
+architecture behav of LRHLS_top_mul_mul_17ns_18s_33_1_0_DSP48_12 is
     signal a_cvt: unsigned(17 - 1 downto 0);
     signal b_cvt: signed(18 - 1 downto 0);
     signal p_cvt: signed(33 - 1 downto 0);
@@ -42,7 +42,7 @@ entity LRHLS_top_mul_mul_17ns_18s_33_1_0 is
 end entity;
 
 architecture arch of LRHLS_top_mul_mul_17ns_18s_33_1_0 is
-    component LRHLS_top_mul_mul_17ns_18s_33_1_0_DSP48_10 is
+    component LRHLS_top_mul_mul_17ns_18s_33_1_0_DSP48_12 is
         port (
             a : IN STD_LOGIC_VECTOR;
             b : IN STD_LOGIC_VECTOR;
@@ -52,7 +52,7 @@ architecture arch of LRHLS_top_mul_mul_17ns_18s_33_1_0 is
 
 
 begin
-    LRHLS_top_mul_mul_17ns_18s_33_1_0_DSP48_10_U :  component LRHLS_top_mul_mul_17ns_18s_33_1_0_DSP48_10
+    LRHLS_top_mul_mul_17ns_18s_33_1_0_DSP48_12_U :  component LRHLS_top_mul_mul_17ns_18s_33_1_0_DSP48_12
     port map (
         a => din0,
         b => din1,

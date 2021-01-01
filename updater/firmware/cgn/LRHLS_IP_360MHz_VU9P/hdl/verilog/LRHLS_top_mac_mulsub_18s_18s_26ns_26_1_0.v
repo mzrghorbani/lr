@@ -4,7 +4,7 @@
 // ==============================================================
 `timescale 1 ns / 1 ps
 
-module LRHLS_top_mac_mulsub_18s_18s_26ns_26_1_0_DSP48_7(
+module LRHLS_top_mac_mulsub_18s_18s_26ns_26_1_0_DSP48_6(
     input  [18 - 1:0] in0,
     input  [18 - 1:0] in1,
     input  [26 - 1:0] in2,
@@ -46,7 +46,7 @@ output[dout_WIDTH - 1:0] dout;
 
 
 
-LRHLS_top_mac_mulsub_18s_18s_26ns_26_1_0_DSP48_7 LRHLS_top_mac_mulsub_18s_18s_26ns_26_1_0_DSP48_7_U(
+LRHLS_top_mac_mulsub_18s_18s_26ns_26_1_0_DSP48_6 LRHLS_top_mac_mulsub_18s_18s_26ns_26_1_0_DSP48_6_U(
     .in0( din0 ),
     .in1( din1 ),
     .in2( din2 ),

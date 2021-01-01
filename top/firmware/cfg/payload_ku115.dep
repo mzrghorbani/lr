@@ -4,9 +4,8 @@ include -c lr:framework components.dep
 
 src -c lr:framework --cd ../cgn *.xci
 
-# Seem to need 360 MHz HLS core to run full KF at 320 MHz ...
-iprepo -c lr:updater LRHLS_IP_360MHz_KU115
+iprepo -c lr:updater LRHLS_IP
 
-src -c lr:updater --cd ../cgn LRHLS_update_IP.xci
+src -c lr:updater --cd ../cgn LRHLS_IP.xci
 
 include -c l1tf:common components.dep

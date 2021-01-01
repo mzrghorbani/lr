@@ -1,5 +1,5 @@
 
-# Traditional KF strategy
+# LR strategy following traditional KF strategy
 #set_property "strategy" "Flow_AreaOptimized_High" [get_runs synth_1]
 #set_property "strategy" "Performance_ExplorePostRoutePhysOpt" [get_runs impl_1]
 

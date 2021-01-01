@@ -1,7 +1,7 @@
 
 `timescale 1 ns / 1 ps
 
-  module LRHLS_top_mul_mul_18s_15ns_33_1_0_DSP48_12(a, b, p);
+  module LRHLS_top_mul_mul_18s_15ns_33_1_0_DSP48_14(a, b, p);
 input signed [18 - 1 : 0] a;
 input [15 - 1 : 0] b;
 output signed [33 - 1 : 0] p;
@@ -26,7 +26,7 @@ output[dout_WIDTH - 1:0] dout;
 
 
 
-LRHLS_top_mul_mul_18s_15ns_33_1_0_DSP48_12 LRHLS_top_mul_mul_18s_15ns_33_1_0_DSP48_12_U(
+LRHLS_top_mul_mul_18s_15ns_33_1_0_DSP48_14 LRHLS_top_mul_mul_18s_15ns_33_1_0_DSP48_14_U(
     .a( din0 ),
     .b( din1 ),
     .p( dout ));

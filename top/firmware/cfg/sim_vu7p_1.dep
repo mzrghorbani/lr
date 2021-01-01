@@ -1,7 +1,6 @@
 # For speed 1 grade VU7P on Apollo.
 
 include -c emp-fwk:boards/testbench
-# For now, this is 360 MHz KF HLS core for VU9P-2, but Apollo EMP currently specified speed 2 grade, so should work ...
 include payload_vu7p_1.dep
 include -c l1tf:top tb_vu7p_1.dep
 src emp_project_decl.vhd 

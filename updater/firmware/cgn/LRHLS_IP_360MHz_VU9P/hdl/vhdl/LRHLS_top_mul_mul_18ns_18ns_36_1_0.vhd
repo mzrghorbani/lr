@@ -3,32 +3,32 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity LRHLS_top_mul_mul_18s_13ns_31_1_0_DSP48_7 is
+entity LRHLS_top_mul_mul_18ns_18ns_36_1_0_DSP48_4 is
 port (
     a: in std_logic_vector(18 - 1 downto 0);
-    b: in std_logic_vector(13 - 1 downto 0);
-    p: out std_logic_vector(31 - 1 downto 0));
+    b: in std_logic_vector(18 - 1 downto 0);
+    p: out std_logic_vector(36 - 1 downto 0));
 
 end entity;
 
-architecture behav of LRHLS_top_mul_mul_18s_13ns_31_1_0_DSP48_7 is
-    signal a_cvt: signed(18 - 1 downto 0);
-    signal b_cvt: unsigned(13 - 1 downto 0);
-    signal p_cvt: signed(31 - 1 downto 0);
+architecture behav of LRHLS_top_mul_mul_18ns_18ns_36_1_0_DSP48_4 is
+    signal a_cvt: unsigned(18 - 1 downto 0);
+    signal b_cvt: unsigned(18 - 1 downto 0);
+    signal p_cvt: unsigned(36 - 1 downto 0);
 
 
 begin
 
-    a_cvt <= signed(a);
+    a_cvt <= unsigned(a);
     b_cvt <= unsigned(b);
-    p_cvt <= signed (resize(unsigned (signed (a_cvt) * signed ('0' & b_cvt)), 31));
+    p_cvt <= unsigned (resize(unsigned (unsigned (a_cvt) * unsigned (b_cvt)), 36));
     p <= std_logic_vector(p_cvt);
 
 end architecture;
 Library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity LRHLS_top_mul_mul_18s_13ns_31_1_0 is
+entity LRHLS_top_mul_mul_18ns_18ns_36_1_0 is
     generic (
         ID : INTEGER;
         NUM_STAGE : INTEGER;
@@ -41,8 +41,8 @@ entity LRHLS_top_mul_mul_18s_13ns_31_1_0 is
         dout : OUT STD_LOGIC_VECTOR(dout_WIDTH - 1 DOWNTO 0));
 end entity;
 
-architecture arch of LRHLS_top_mul_mul_18s_13ns_31_1_0 is
-    component LRHLS_top_mul_mul_18s_13ns_31_1_0_DSP48_7 is
+architecture arch of LRHLS_top_mul_mul_18ns_18ns_36_1_0 is
+    component LRHLS_top_mul_mul_18ns_18ns_36_1_0_DSP48_4 is
         port (
             a : IN STD_LOGIC_VECTOR;
             b : IN STD_LOGIC_VECTOR;
@@ -52,7 +52,7 @@ architecture arch of LRHLS_top_mul_mul_18s_13ns_31_1_0 is
 
 
 begin
-    LRHLS_top_mul_mul_18s_13ns_31_1_0_DSP48_7_U :  component LRHLS_top_mul_mul_18s_13ns_31_1_0_DSP48_7
+    LRHLS_top_mul_mul_18ns_18ns_36_1_0_DSP48_4_U :  component LRHLS_top_mul_mul_18ns_18ns_36_1_0_DSP48_4
     port map (
         a => din0,
         b => din1,

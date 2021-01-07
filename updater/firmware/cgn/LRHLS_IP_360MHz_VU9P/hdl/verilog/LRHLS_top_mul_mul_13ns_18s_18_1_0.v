@@ -1,16 +1,16 @@
 
 `timescale 1 ns / 1 ps
 
-  module LRHLS_top_mul_mul_18s_13ns_31_1_0_DSP48_7(a, b, p);
-input signed [18 - 1 : 0] a;
-input [13 - 1 : 0] b;
-output signed [31 - 1 : 0] p;
+  module LRHLS_top_mul_mul_13ns_18s_18_1_0_DSP48_9(a, b, p);
+input [13 - 1 : 0] a;
+input signed [18 - 1 : 0] b;
+output signed [18 - 1 : 0] p;
 
-assign p = $signed (a) * $signed ({1'b0, b});
+assign p = $signed ({1'b0, a}) * $signed (b);
 
 endmodule
 `timescale 1 ns / 1 ps
-module LRHLS_top_mul_mul_18s_13ns_31_1_0(
+module LRHLS_top_mul_mul_13ns_18s_18_1_0(
     din0,
     din1,
     dout);
@@ -26,7 +26,7 @@ output[dout_WIDTH - 1:0] dout;
 
 
 
-LRHLS_top_mul_mul_18s_13ns_31_1_0_DSP48_7 LRHLS_top_mul_mul_18s_13ns_31_1_0_DSP48_7_U(
+LRHLS_top_mul_mul_13ns_18s_18_1_0_DSP48_9 LRHLS_top_mul_mul_13ns_18s_18_1_0_DSP48_9_U(
     .a( din0 ),
     .b( din1 ),
     .p( dout ));

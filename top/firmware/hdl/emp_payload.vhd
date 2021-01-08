@@ -4,6 +4,7 @@ use work.ipbus.all;
 use work.emp_data_types.all;
 use work.emp_device_decl.all;
 use work.emp_ttc_decl.all;
+use work.LR_Config_pkg.all;
 
 
 entity emp_payload is
@@ -33,7 +34,7 @@ architecture rtl of emp_payload is
 begin
 
 
-cLR: entity work.Top_LR port map ( clk_p, d, q );
+cLR: entity work.LR_Top port map ( clk_p, d, q );
 
 gpio <= ( others => '0' );
 gpio_en <= ( others => '0' );

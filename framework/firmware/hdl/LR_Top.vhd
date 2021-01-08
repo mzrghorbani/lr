@@ -16,10 +16,8 @@ end;
 
 architecture rtl of LR_Top is
 
-
 signal din: ldata( LR_Workers - 1 downto 0 ) := ( others => LWORD_NULL );
 signal dout: ldata( 2 * LR_Workers - 1 downto 0 ) := ( others => LWORD_NULL );
-
 
 begin
 

@@ -4,10 +4,10 @@ USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 USE IEEE.math_real.ALL;
 
-USE WORK.LR_Stubs_pkg.ALL;
 USE WORK.utilities_pkg.ALL;
 USE WORK.config.ALL;
-USE WORK.LR_Config_pkg.ALL;
+USE WORK.LR_Config.ALL;
+USE WORK.LR_Stubs.ALL;
 
 USE WORK.emp_data_types.ALL;
 
@@ -292,7 +292,7 @@ USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 
 USE WORK.utilities_pkg.ALL;
-USE WORK.DR_Tracks_pkg.ALL;
+USE WORK.DR_Tracks.ALL;
 USE WORK.emp_data_types.ALL;
 
 

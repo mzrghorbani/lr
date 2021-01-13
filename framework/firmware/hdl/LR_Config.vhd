@@ -8,7 +8,7 @@ use work.tools.all;
 use work.config.all;
 
 
-package LR_Config_pkg is
+package LR_Config is
 
 constant LR_Workers: natural := 16;
 
@@ -72,11 +72,11 @@ constant baseInv2R : REAL := basePhi/baseR;
 constant baseDiffPhi0  : integer := integer(round(log2(neededRangeC/real(houghNbinsPhi)/basePhi))); -- number returned by log2 will be integer aside from numerical inaccuracy.
 constant baseDiffInv2R : integer := integer(round(log2(neededRangeM/real(houghNbinsPt)/baseInv2R)));
 
-end package LR_Config_pkg;
+end package LR_Config;
 
 
 
-package body LR_Config_pkg is
+package body LR_Config is
 
 function inputLinkMapping( l: ldata ) return ldata is
     variable r: ldata( LR_Workers - 1 downto 0 ) := ( others => LWORD_NULL );
@@ -96,5 +96,5 @@ begin
     return r;
 end function;
 
-end package body LR_Config_pkg;
+end package body LR_Config;
 

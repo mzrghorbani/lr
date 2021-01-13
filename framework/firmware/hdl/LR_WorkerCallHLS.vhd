@@ -4,10 +4,11 @@ USE IEEE.NUMERIC_STD.ALL;
 USE IEEE.math_real.ALL;
 
 USE WORK.Config.ALL;
-USE WORK.LR_Config_pkg.ALL;
-USE WORK.DR_Tracks_pkg.ALL;
-USE WORK.LR_Tracks_pkg.ALL;
-USE WORK.LR_Stubs_pkg.ALL;
+USE WORK.LR_Config.ALL;
+USE WORK.LR_Stubs.ALL;
+USE WORK.DR_Tracks.ALL;
+USE WORK.LR_Tracks.ALL;
+
 USE WORK.utilities_pkg.ALL;
 
 
@@ -34,27 +35,66 @@ component LRHLS_update_IP is
         ap_clk : in STD_LOGIC;
         ap_rst : in STD_LOGIC;
         ap_start : in STD_LOGIC;
-        ap_ready : out STD_LOGIC;
         ap_done : out STD_LOGIC;
         ap_idle : out STD_LOGIC;
-        stubIn_r : in STD_LOGIC_VECTOR ( 12 downto 0 );
-        stubIn_phi : in STD_LOGIC_VECTOR ( 13 downto 0 );
-        stubIn_z : in STD_LOGIC_VECTOR ( 13 downto 0 );
-        stubIn_layer : in STD_LOGIC_VECTOR ( 2 downto 0 );
-        stubIn_barrel : in STD_LOGIC_VECTOR ( 0 to 0 );
-        stubIn_psModule : in STD_LOGIC_VECTOR ( 0 to 0 );
-        stubIn_valid : in STD_LOGIC_VECTOR ( 0 to 0 );
-        stubOut_r : out STD_LOGIC_VECTOR ( 12 downto 0 );
-        stubOut_phi : out STD_LOGIC_VECTOR ( 13 downto 0 );
-        stubOut_z : out STD_LOGIC_VECTOR ( 13 downto 0 );
-        stubOut_layer : out STD_LOGIC_VECTOR ( 2 downto 0 );
-        stubOut_barrel : out STD_LOGIC_VECTOR ( 0 to 0 );
-        stubOut_psModule : out STD_LOGIC_VECTOR ( 0 to 0 );
-        stubOut_valid : out STD_LOGIC_VECTOR ( 0 to 0 );
-        track_qOverPt : out STD_LOGIC_VECTOR ( 17 downto 0 );
-        track_phiT : out STD_LOGIC_VECTOR ( 17 downto 0 );
-        track_cot : out STD_LOGIC_VECTOR ( 17 downto 0 );
-        track_zT : out STD_LOGIC_VECTOR ( 17 downto 0 )
+        ap_ready : out STD_LOGIC;
+        stubIn_r_V_ce0 : out STD_LOGIC;
+        stubIn_phi_V_ce0 : out STD_LOGIC;
+        stubIn_z_V_ce0 : out STD_LOGIC;
+        stubIn_layer_V_ce0 : out STD_LOGIC;
+        stubIn_barrel_V_ce0 : out STD_LOGIC;
+        stubIn_psModule_V_ce0 : out STD_LOGIC;
+        stubIn_valid_V_ce0 : out STD_LOGIC;
+        stubOut_r_V_ce0 : out STD_LOGIC;
+        stubOut_r_V_we0 : out STD_LOGIC;
+        stubOut_phi_V_ce0 : out STD_LOGIC;
+        stubOut_phi_V_we0 : out STD_LOGIC;
+        stubOut_z_V_ce0 : out STD_LOGIC;
+        stubOut_z_V_we0 : out STD_LOGIC;
+        stubOut_layer_V_ce0 : out STD_LOGIC;
+        stubOut_layer_V_we0 : out STD_LOGIC;
+        stubOut_barrel_V_ce0 : out STD_LOGIC;
+        stubOut_barrel_V_we0 : out STD_LOGIC;
+        stubOut_psModule_V_ce0 : out STD_LOGIC;
+        stubOut_psModule_V_we0 : out STD_LOGIC;
+        stubOut_valid_V_ce0 : out STD_LOGIC;
+        stubOut_valid_V_we0 : out STD_LOGIC;
+        track_qOverPt_V_ap_vld : out STD_LOGIC;
+        track_phiT_V_ap_vld : out STD_LOGIC;
+        track_cot_V_ap_vld : out STD_LOGIC;
+        track_zT_V_ap_vld : out STD_LOGIC;
+        stubIn_r_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
+        stubIn_r_V_q0 : in STD_LOGIC_VECTOR ( 12 downto 0 );
+        stubIn_phi_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
+        stubIn_phi_V_q0 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+        stubIn_z_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
+        stubIn_z_V_q0 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+        stubIn_layer_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
+        stubIn_layer_V_q0 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+        stubIn_barrel_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
+        stubIn_barrel_V_q0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+        stubIn_psModule_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
+        stubIn_psModule_V_q0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+        stubIn_valid_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
+        stubIn_valid_V_q0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+        stubOut_r_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
+        stubOut_r_V_d0 : out STD_LOGIC_VECTOR ( 12 downto 0 );
+        stubOut_phi_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
+        stubOut_phi_V_d0 : out STD_LOGIC_VECTOR ( 13 downto 0 );
+        stubOut_z_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
+        stubOut_z_V_d0 : out STD_LOGIC_VECTOR ( 13 downto 0 );
+        stubOut_layer_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
+        stubOut_layer_V_d0 : out STD_LOGIC_VECTOR ( 2 downto 0 );
+        stubOut_barrel_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
+        stubOut_barrel_V_d0 : out STD_LOGIC_VECTOR ( 0 to 0 );
+        stubOut_psModule_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
+        stubOut_psModule_V_d0 : out STD_LOGIC_VECTOR ( 0 to 0 );
+        stubOut_valid_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
+        stubOut_valid_V_d0 : out STD_LOGIC_VECTOR ( 0 to 0 );
+        track_qOverPt_V : out STD_LOGIC_VECTOR ( 17 downto 0 );
+        track_phiT_V : out STD_LOGIC_VECTOR ( 17 downto 0 );
+        track_cot_V : out STD_LOGIC_VECTOR ( 17 downto 0 );
+        track_zT_V : out STD_LOGIC_VECTOR ( 17 downto 0 )
     );
 end component LRHLS_update_IP;
 
@@ -137,24 +177,24 @@ LRHLS_update_IP_i: component LRHLS_update_IP
         ap_ready => ready,
         ap_done => done,
         ap_idle => idle,
-        stubIn_r(12 downto 0) => stubIn_r(12 downto 0),
-        stubIn_phi(13 downto 0) => stubIn_phi(13 downto 0),
-        stubIn_z(13 downto 0) => stubIn_z(13 downto 0),
-        stubIn_layer(2 downto 0) => stubIn_layer(2 downto 0),
-        stubIn_barrel(0) => stubIn_barrel(0),
-        stubIn_psModule(0) => stubIn_psModule(0),
-        stubIn_valid(0) => stubIn_valid(0),
-        stubOut_r(12 downto 0) => stubOut_r(12 downto 0),
-        stubOut_phi(13 downto 0) => stubOut_phi(13 downto 0),
-        stubOut_z(13 downto 0) => stubOut_z(13 downto 0),
-        stubOut_layer(2 downto 0) => stubOut_layer(2 downto 0),
-        stubOut_barrel(0) => stubOut_barrel(0),
-        stubOut_psModule(0) => stubOut_psModule(0),
-        stubOut_valid(0) => stubOut_valid(0),
-        track_qOverPt(17 downto 0) => track_qOverPt(17 downto 0),
-        track_phiT(17 downto 0) => track_phiT(17 downto 0),
-        track_cot(17 downto 0) => track_cot(17 downto 0),
-        track_zT(17 downto 0) => track_zT(17 downto 0)
+        stubIn_r_V_q0(12 downto 0) => stubIn_r(12 downto 0),
+        stubIn_phi_V_q0(13 downto 0) => stubIn_phi(13 downto 0),
+        stubIn_z_V_q0(13 downto 0) => stubIn_z(13 downto 0),
+        stubIn_layer_V_q0(2 downto 0) => stubIn_layer(2 downto 0),
+        stubIn_barrel_V_q0(0) => stubIn_barrel(0),
+        stubIn_psModule_V_q0(0) => stubIn_psModule(0),
+        stubIn_valid_V_q0(0) => stubIn_valid(0),
+        stubOut_r_V_d0(12 downto 0) => stubOut_r(12 downto 0),
+        stubOut_phi_V_d0(13 downto 0) => stubOut_phi(13 downto 0),
+        stubOut_z_V_d0(13 downto 0) => stubOut_z(13 downto 0),
+        stubOut_layer_V_d0(2 downto 0) => stubOut_layer(2 downto 0),
+        stubOut_barrel_V_d0(0) => stubOut_barrel(0),
+        stubOut_psModule_V_d0(0) => stubOut_psModule(0),
+        stubOut_valid_V_d0(0) => stubOut_valid(0),
+        track_qOverPt_V(17 downto 0) => track_qOverPt(17 downto 0),
+        track_phiT_V(17 downto 0) => track_phiT(17 downto 0),
+        track_cot_V(17 downto 0) => track_cot(17 downto 0),
+        track_zT_V(17 downto 0) => track_zT(17 downto 0)
     );
     
 stubOut.r <= unsigned( stubOut_r );

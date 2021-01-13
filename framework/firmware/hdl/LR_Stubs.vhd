@@ -6,12 +6,11 @@ USE IEEE.math_real.ALL;
 USE WORK.XMLutilities_pkg.ALL;
 USE WORK.utilities_pkg.ALL;
 USE WORK.config.ALL;
-USE WORK.LR_Config_pkg.ALL;
+USE WORK.LR_Config.ALL;
 USE WORK.tools.ALL;
 
 
--- ----------------------------------------------
-PACKAGE LR_Stubs_pkg IS
+PACKAGE LR_Stubs IS
 
   TYPE tStub IS RECORD
     cBin                : SIGNED( widthBinsPhi - 1 DOWNTO 0 );
@@ -50,11 +49,11 @@ PACKAGE LR_Stubs_pkg IS
   FUNCTION ToStub( aStdLogicVector     : STD_LOGIC_VECTOR ) RETURN tStub;
   FUNCTION LinkToStub( aStdLogicVector : STD_LOGIC_VECTOR ) RETURN tStub;
 
-END PACKAGE LR_Stubs_pkg;
+END PACKAGE LR_Stubs;
 -- ----------------------------------------------
 
 -- ----------------------------------------------
-PACKAGE BODY LR_Stubs_pkg IS
+PACKAGE BODY LR_Stubs IS
 
   FUNCTION ToXML( aStub : tStub ) RETURN STRING IS
   BEGIN
@@ -195,4 +194,4 @@ PACKAGE BODY LR_Stubs_pkg IS
     RETURN lStub;
   END FUNCTION LinkToStub;
 
-END PACKAGE BODY LR_Stubs_pkg;
+END PACKAGE BODY LR_Stubs;

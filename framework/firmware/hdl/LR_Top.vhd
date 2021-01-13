@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use work.emp_data_types.all;
 use work.emp_device_decl.all;
-use work.LR_Config_pkg.all;
+use work.LR_Config.all;
 
 
 entity LR_Top is
@@ -22,8 +22,8 @@ signal dout: ldata( 2 * LR_Workers - 1 downto 0 ) := ( others => LWORD_NULL );
 begin
 
 
-din <= work.LR_Config_pkg.inputLinkMapping( LR_Top_din );
-LR_Top_dout <= work.LR_Config_pkg.outputLinkMapping( dout );
+din <= work.LR_Config.inputLinkMapping( LR_Top_din );
+LR_Top_dout <= work.LR_Config.outputLinkMapping( dout );
 
 gN: for WorkerID in 0 to LR_Workers - 1 generate
 

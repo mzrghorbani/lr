@@ -1,9 +1,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
-USE WORK.LR_Config_pkg.all;
-use work.LR_Tracks_pkg.all;
-use work.DR_Tracks_pkg.all;
-use work.LR_Stubs_pkg.all;
+USE WORK.LR_Config.all;
+use work.LR_Tracks.all;
+use work.DR_Tracks.all;
+use work.LR_Stubs.all;
 use work.utilities_pkg.all;
 use work.emp_data_types.all;
 

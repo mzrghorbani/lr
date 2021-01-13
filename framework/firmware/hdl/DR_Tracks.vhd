@@ -5,12 +5,11 @@ USE IEEE.NUMERIC_STD.ALL;
 USE WORK.XMLutilities_pkg.ALL;
 USE WORK.utilities_pkg.ALL;
 USE WORK.config.ALL;
-USE WORK.LR_Config_pkg.ALL;
-USE WORK.LR_Tracks_pkg.ALL;
+USE WORK.LR_Config.ALL;
+USE WORK.LR_Tracks.ALL;
 
 
--- ----------------------------------------------
-PACKAGE DR_Tracks_pkg IS
+PACKAGE DR_Tracks IS
 
   TYPE tDRtrack IS RECORD
     inv2R        : SIGNED( widthInv2R-1 DOWNTO 0 );
@@ -59,11 +58,11 @@ PACKAGE DR_Tracks_pkg IS
   FUNCTION ToDRtrack( aLRtrack        : tLRtrack ) RETURN tDRtrack;
 
 
-END PACKAGE DR_Tracks_pkg;
+END PACKAGE DR_Tracks;
 -- ----------------------------------------------
 
 -- ----------------------------------------------
-PACKAGE BODY DR_Tracks_pkg IS
+PACKAGE BODY DR_Tracks IS
 
   FUNCTION ToXML( aTrack : tDRtrack ) RETURN STRING IS
   BEGIN
@@ -188,8 +187,6 @@ PACKAGE BODY DR_Tracks_pkg IS
   END FUNCTION ToDRtrack;
 
 
-
-
   FUNCTION ToDRtrack( aLRtrack : tLRtrack ) RETURN tDRtrack IS
     VARIABLE Nlayers           : INTEGER RANGE 0 TO 7    := 0;
     VARIABLE NotLay            : UNSIGNED(  2 DOWNTO 0 ) := ( OTHERS => '0' );
@@ -241,4 +238,4 @@ PACKAGE BODY DR_Tracks_pkg IS
     RETURN lDRtrack;
   END FUNCTION ToDRtrack;
 
-END PACKAGE BODY DR_Tracks_pkg;
+END PACKAGE BODY DR_Tracks;

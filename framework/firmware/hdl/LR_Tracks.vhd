@@ -5,10 +5,10 @@ USE IEEE.NUMERIC_STD.ALL;
 USE WORK.XMLutilities_pkg.ALL;
 USE WORK.utilities_pkg.ALL;
 USE WORK.config.ALL;
-USE WORK.LR_Config_pkg.ALL;
+USE WORK.LR_Config.ALL;
 
 -- ----------------------------------------------
-PACKAGE LR_Tracks_pkg IS
+PACKAGE LR_Tracks IS
 
   TYPE tLRtrack IS RECORD
     inv2R             : SIGNED( widthHELIX-1 DOWNTO 0 );
@@ -78,11 +78,11 @@ PACKAGE LR_Tracks_pkg IS
 
   FUNCTION ToXML( aTrack              : tLRtrack ) RETURN STRING;
 
-END PACKAGE LR_Tracks_pkg;
+END PACKAGE LR_Tracks;
 -- ----------------------------------------------
 
 -- ----------------------------------------------
-PACKAGE BODY LR_Tracks_pkg IS
+PACKAGE BODY LR_Tracks IS
 
   FUNCTION ToXML( aTrack : tLRtrack ) RETURN STRING IS
   BEGIN
@@ -198,4 +198,4 @@ PACKAGE BODY LR_Tracks_pkg IS
     RETURN lTrack;
   END FUNCTION ToLRtrack;
 
-END PACKAGE BODY LR_Tracks_pkg;
+END PACKAGE BODY LR_Tracks;

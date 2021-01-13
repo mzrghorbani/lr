@@ -1,8 +1,9 @@
-src LR_Config.vhd
-src LR_Stubs.vhd
-src LR_Tracks.vhd
-src DR_Tracks.vhd
 src LR_Top.vhd
 src LR_Node.vhd
-src LR_LinkFormatter.vhd
+#src LR_PrintTop.vhd
 src LR_WorkerCallHLS.vhd
+src LR_LinkFormatter.vhd
+src LR_Stubs.vhd
+src DR_Tracks.vhd
+src LR_Tracks.vhd
+src LR_Config.vhd

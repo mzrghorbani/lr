@@ -26,21 +26,18 @@ architecture rtl of LR_Node is
 signal InputStub, OutputStub : tStub := NullStub;
 signal OutputLRtrack : tLRtrack := NullLRtrack;
 signal OutputDRtrack : tDRtrack := NullDRtrack;
-signal Synchronize: std_logic := '0';
-signal EventCut: integer range 0 to numEvents - 1 := 0;
 
 begin
 
+cILF: entity work.InputLinkFormatter port map ( clk, LR_Node_din, InputStub);
 
-cILF: entity work.InputLinkFormatter port map ( clk, LR_Node_din, InputStub, Synchronize );
-
-cHLS: entity work.LR_WorkerCallHLS port map ( clk, InputStub, OutputStub, OutputLRtrack );
-
+cHLS: entity work.LR_WorkerCallHLS port map ( clk, InputStub, OutputStub, OutputLRtrack, OutputDRtrack );
+ 
 cOLF: entity work.OutputLinkFormatter port map ( clk, OutputDRtrack, LR_Node_dout );
 
 --Debug printout
 --gDebug : if not For_Synthesis generate
---  cPT: work.LR_PrintTop generic map ( WorkerID ) port map ( clk, EventCut, LR_Node_din, InputStub, OutputStub, OutputTrack);
+--  cPT: entity work.LR_PrintTop generic map ( WorkerID ) port map ( clk, LR_Node_din, InputStub, OutputStub, OutputLRTrack, OutputDRTrack ); --, LR_Node_dout );
 --end generate;
 
 end;

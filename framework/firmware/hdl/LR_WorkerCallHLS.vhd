@@ -1,7 +1,7 @@
+LIBRARY XIL_DEFAULTLIB;
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
-USE IEEE.math_real.ALL;
 
 USE WORK.Config.ALL;
 USE WORK.LR_Config.ALL;
@@ -22,81 +22,15 @@ ENTITY LR_WorkerCallHLS IS
     Use_Sector_cut     : BOOLEAN := TRUE
   );
   PORT(
-    clk        : in  std_logic;
-    stubIn     : in  tStub       := NullStub;
-    stubOut    : out tStub       := NullStub;
-    trackOut   : out tLRtrack    := NullLRtrack
+    clk          : in  std_logic;
+    stubIn       : in  tStub       := NullStub;
+    stubOut      : out tStub       := NullStub;
+    lrTrackOut   : out tLRtrack    := NullLRtrack;
+    drTrackOut   : out tDRtrack    := NullDRtrack
   );
 END LR_WorkerCallHLS;
 
 ARCHITECTURE rtl OF LR_WorkerCallHLS IS
-component LRHLS_update_IP is
-    port (
-        ap_clk : in STD_LOGIC;
-        ap_rst : in STD_LOGIC;
-        ap_start : in STD_LOGIC;
-        ap_done : out STD_LOGIC;
-        ap_idle : out STD_LOGIC;
-        ap_ready : out STD_LOGIC;
-        stubIn_r_V_ce0 : out STD_LOGIC;
-        stubIn_phi_V_ce0 : out STD_LOGIC;
-        stubIn_z_V_ce0 : out STD_LOGIC;
-        stubIn_layer_V_ce0 : out STD_LOGIC;
-        stubIn_barrel_V_ce0 : out STD_LOGIC;
-        stubIn_psModule_V_ce0 : out STD_LOGIC;
-        stubIn_valid_V_ce0 : out STD_LOGIC;
-        stubOut_r_V_ce0 : out STD_LOGIC;
-        stubOut_r_V_we0 : out STD_LOGIC;
-        stubOut_phi_V_ce0 : out STD_LOGIC;
-        stubOut_phi_V_we0 : out STD_LOGIC;
-        stubOut_z_V_ce0 : out STD_LOGIC;
-        stubOut_z_V_we0 : out STD_LOGIC;
-        stubOut_layer_V_ce0 : out STD_LOGIC;
-        stubOut_layer_V_we0 : out STD_LOGIC;
-        stubOut_barrel_V_ce0 : out STD_LOGIC;
-        stubOut_barrel_V_we0 : out STD_LOGIC;
-        stubOut_psModule_V_ce0 : out STD_LOGIC;
-        stubOut_psModule_V_we0 : out STD_LOGIC;
-        stubOut_valid_V_ce0 : out STD_LOGIC;
-        stubOut_valid_V_we0 : out STD_LOGIC;
-        track_qOverPt_V_ap_vld : out STD_LOGIC;
-        track_phiT_V_ap_vld : out STD_LOGIC;
-        track_cot_V_ap_vld : out STD_LOGIC;
-        track_zT_V_ap_vld : out STD_LOGIC;
-        stubIn_r_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
-        stubIn_r_V_q0 : in STD_LOGIC_VECTOR ( 12 downto 0 );
-        stubIn_phi_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
-        stubIn_phi_V_q0 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-        stubIn_z_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
-        stubIn_z_V_q0 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-        stubIn_layer_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
-        stubIn_layer_V_q0 : in STD_LOGIC_VECTOR ( 2 downto 0 );
-        stubIn_barrel_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
-        stubIn_barrel_V_q0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-        stubIn_psModule_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
-        stubIn_psModule_V_q0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-        stubIn_valid_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
-        stubIn_valid_V_q0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-        stubOut_r_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
-        stubOut_r_V_d0 : out STD_LOGIC_VECTOR ( 12 downto 0 );
-        stubOut_phi_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
-        stubOut_phi_V_d0 : out STD_LOGIC_VECTOR ( 13 downto 0 );
-        stubOut_z_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
-        stubOut_z_V_d0 : out STD_LOGIC_VECTOR ( 13 downto 0 );
-        stubOut_layer_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
-        stubOut_layer_V_d0 : out STD_LOGIC_VECTOR ( 2 downto 0 );
-        stubOut_barrel_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
-        stubOut_barrel_V_d0 : out STD_LOGIC_VECTOR ( 0 to 0 );
-        stubOut_psModule_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
-        stubOut_psModule_V_d0 : out STD_LOGIC_VECTOR ( 0 to 0 );
-        stubOut_valid_V_address0 : out STD_LOGIC_VECTOR ( 1 downto 0 );
-        stubOut_valid_V_d0 : out STD_LOGIC_VECTOR ( 0 to 0 );
-        track_qOverPt_V : out STD_LOGIC_VECTOR ( 17 downto 0 );
-        track_phiT_V : out STD_LOGIC_VECTOR ( 17 downto 0 );
-        track_cot_V : out STD_LOGIC_VECTOR ( 17 downto 0 );
-        track_zT_V : out STD_LOGIC_VECTOR ( 17 downto 0 )
-    );
-end component LRHLS_update_IP;
 
 -- Control signals
 signal reset : std_logic := '1'; -- asserted LOW
@@ -105,38 +39,47 @@ signal ready : std_logic := '0'; -- asserted HIGHT
 signal done  : std_logic := '0'; -- asserted HIGHT 
 signal idle  : std_logic := '1'; -- asserted LOW
 
--- input interface
-signal stubIn_r: STD_LOGIC_VECTOR ( 12 downto 0 );
-signal stubIn_phi: STD_LOGIC_VECTOR ( 13 downto 0 );
-signal stubIn_z: STD_LOGIC_VECTOR ( 13 downto 0 );
-signal stubIn_layer: STD_LOGIC_VECTOR ( 2 downto 0 );
-signal stubIn_barrel: STD_LOGIC_VECTOR ( 0 to 0 );
-signal stubIn_psModule: STD_LOGIC_VECTOR ( 0 to 0 );
-signal stubIn_valid: STD_LOGIC_VECTOR ( 0 to 0 );
+-- Internal signals
 
--- output interface
-signal stubOut_r: STD_LOGIC_VECTOR ( 12 downto 0 );
-signal stubOut_phi: STD_LOGIC_VECTOR ( 13 downto 0 );
-signal stubOut_z: STD_LOGIC_VECTOR ( 13 downto 0 );
-signal stubOut_layer: STD_LOGIC_VECTOR ( 2 downto 0 );
-signal stubOut_barrel: STD_LOGIC_VECTOR ( 0 to 0 );
-signal stubOut_psModule: STD_LOGIC_VECTOR ( 0 to 0 );
-signal stubOut_valid: STD_LOGIC_VECTOR ( 0 to 0 );
+signal cBin : std_logic_vector( widthBinsPhi - 1 downto 0 ) := ( others => '0' );
+signal mBin : std_logic_vector( widthBinsPt - 1 downto 0 ) := ( others => '0' );
+signal z : std_logic_vector( widthZ - 1 downto 0 ) := ( others => '0' );
+signal phiS : std_logic_vector( 13 downto 0 ) := ( others => '0' );               
+signal r : std_logic_vector( 12 downto 0 ) := ( others => '0' );                  
+signal PhiSectorID : std_logic_vector( 17 downto 0 ) := ( others => '0' );       
+signal EtaSectorID : std_logic_vector( 7 downto 0 ) := ( others => '0' );      
+signal zSign : std_logic := '0';             
+signal trackID : std_logic_vector( 17 downto 0 ) := ( others => '0' );            
+signal layerID : std_logic_vector( 17 downto 0 ) := ( others => '0' );          
+signal StubID  : std_logic_vector( 17 downto 0 ) := ( others => '0' );          
+signal EventID :  std_logic_vector( 17 downto 0 ) := ( others => '0' );          
+signal LastStubInTrack : std_logic := '0';     
+signal DataValid : std_logic_vector( 0 downto 0 ) := ( others => '0' );      
+signal IsEndCap : std_logic := '0';           
+signal FrameValid : std_logic := '0'; 
 
--- output interface
-signal track_qOverPt: STD_LOGIC_VECTOR ( 17 downto 0 );
-signal track_qOverPt_vld: STD_LOGIC;
-signal track_phiT: STD_LOGIC_VECTOR ( 17 downto 0 );
-signal track_phiT_vld: STD_LOGIC;
-signal track_cot: STD_LOGIC_VECTOR ( 17 downto 0 );
-signal track_cot_vld: STD_LOGIC;
-signal track_zT: STD_LOGIC_VECTOR ( 17 downto 0 );
-signal track_zT_vld: STD_LOGIC;
+signal stubIn_barrel :  std_logic_vector( 0 downto 0 ) := ( others => '0' ); 
+signal stubIn_psModule :  std_logic_vector( 0 downto 0 ) := ( others => '0' );     
 
--- intermediate signals
+signal barrel :  std_logic_vector( 0 downto 0 ) := ( others => '0' ); 
+signal psModule :  std_logic_vector( 0 downto 0 ) := ( others => '0' );
+    
+signal qOverPt: std_logic_vector ( 17 downto 0 ) := ( others => '0' );
+signal phiT: std_logic_vector ( 17 downto 0 ) := ( others => '0' );
+signal cot: std_logic_vector ( 17 downto 0 ) := ( others => '0' );
+signal zT: std_logic_vector ( 17 downto 0 ) := ( others => '0' );
+
+-- signals
 signal absZ: integer;
 
 begin
+
+-- TODO: modification of tStub record to add barrel and PS information.
+-- Setting barrel and PS for simulations only! (perhaps not correct values!)
+absZ <= to_integer( not stubIn.z ) when stubIn.z( stubIn.z'high ) = '1';
+stubIn_barrel <= "1" when absZ < integer( barrelHalfLength / baseZ ) else "0";
+stubIn_psModule <= "1" when absZ < integer( barrelHalfLength / baseZ ) else "0";
+
 
 ctrl_proc : process ( clk )
 variable numClk : unsigned( 1 downto 0 ) := ( others => '0' );
@@ -155,52 +98,56 @@ begin
 end process;
 
 
-stubIn_r <= std_logic_vector( stubIn.r );
-stubIn_phi <= std_logic_vector( stubIn.phiS );
-stubIn_z <= std_logic_vector( stubIn.z );
-stubIn_layer <= std_logic_vector( to_unsigned( stubIn.layerID, stubIn_layer'length ) );
+xil_defaultliberInstance : entity xil_defaultlib.LRHLS_update_IP
+port map (
+    ap_clk => clk,
+    ap_rst => reset,
+    ap_start => start,
+    ap_ready => ready,
+    ap_done => done,
+    ap_idle => idle,
+    stubIn_r_V_q0( 12 downto 0 ) => std_logic_vector( StubIn.r ),
+    stubIn_phi_V_q0( 13 downto 0 ) => std_logic_vector( StubIn.phiS ),
+    stubIn_z_V_q0( 13 downto 0 ) => std_logic_vector( StubIn.z ),
+    stubIn_layer_V_q0( 2 downto 0 ) => ToStdLogicVector3( StubIn.LayerID ),
+    stubIn_barrel_V_q0( 0 ) => stubIn_barrel( 0 ),
+    stubIn_psModule_V_q0( 0 ) => stubIn_psModule( 0 ),
+    stubIn_valid_V_q0( 0 ) => ToStdLogic( StubIn.DataValid ),
+    stubOut_r_V_d0( 12 downto 0 ) => r( 12 downto 0 ),
+    stubOut_phi_V_d0( 13 downto 0 ) => phiS( 13 downto 0 ),
+    stubOut_z_V_d0( 13 downto 0 ) => z( 13 downto 0 ),
+    stubOut_layer_V_d0( 2 downto 0 ) => layerID( 2 downto 0 ),
+    stubOut_barrel_V_d0( 0 ) => barrel( 0 ),
+    stubOut_psModule_V_d0( 0 ) => psModule( 0 ),
+    stubOut_valid_V_d0( 0 ) => DataValid( 0 ),
+    track_qOverPt_V( 17 downto 0 ) => qOverPt( 17 downto 0 ),
+    track_phiT_V( 17 downto 0 ) => phiT( 17 downto 0 ),
+    track_cot_V( 17 downto 0 ) => cot( 17 downto 0 ),
+    track_zT_V( 17 downto 0 ) => zT( 17 downto 0 )
+);
 
--- TODO: modification of tStub record to add barrel and PS information.
--- Setting barrel and PS for simulations only! (perhaps not correct values!)
-absZ <= to_integer( not stubIn.z ) when stubIn.z( stubIn.z'high ) = '1';
-stubIn_barrel <= "1" when absZ < integer( floor( barrelHalfLength / baseZ ) ) else "0";
-stubIn_psModule <= "1" when absZ < integer( floor( barrelHalfLength / baseZ ) ) else "0";
 
-stubIn_valid <= ToStdLogicVector( stubIn.DataValid );
+proc : process( clk )
 
-  
-LRHLS_update_IP_i: component LRHLS_update_IP
-    port map (
-        ap_clk => clk,
-        ap_rst => reset,
-        ap_start => start,
-        ap_ready => ready,
-        ap_done => done,
-        ap_idle => idle,
-        stubIn_r_V_q0(12 downto 0) => stubIn_r(12 downto 0),
-        stubIn_phi_V_q0(13 downto 0) => stubIn_phi(13 downto 0),
-        stubIn_z_V_q0(13 downto 0) => stubIn_z(13 downto 0),
-        stubIn_layer_V_q0(2 downto 0) => stubIn_layer(2 downto 0),
-        stubIn_barrel_V_q0(0) => stubIn_barrel(0),
-        stubIn_psModule_V_q0(0) => stubIn_psModule(0),
-        stubIn_valid_V_q0(0) => stubIn_valid(0),
-        stubOut_r_V_d0(12 downto 0) => stubOut_r(12 downto 0),
-        stubOut_phi_V_d0(13 downto 0) => stubOut_phi(13 downto 0),
-        stubOut_z_V_d0(13 downto 0) => stubOut_z(13 downto 0),
-        stubOut_layer_V_d0(2 downto 0) => stubOut_layer(2 downto 0),
-        stubOut_barrel_V_d0(0) => stubOut_barrel(0),
-        stubOut_psModule_V_d0(0) => stubOut_psModule(0),
-        stubOut_valid_V_d0(0) => stubOut_valid(0),
-        track_qOverPt_V(17 downto 0) => track_qOverPt(17 downto 0),
-        track_phiT_V(17 downto 0) => track_phiT(17 downto 0),
-        track_cot_V(17 downto 0) => track_cot(17 downto 0),
-        track_zT_V(17 downto 0) => track_zT(17 downto 0)
-    );
+variable llrTrack : tLRtrack := NullLRtrack;
+variable ldrTrack : tDRtrack := NullDRtrack;
+
+begin
+
+    if rising_edge( clk ) then
     
-stubOut.r <= unsigned( stubOut_r );
-stubOut.phiS <= signed( stubOut_phi );
-stubOut.z <= signed( stubOut_z );
-stubOut.layerID <= to_integer( unsigned( stubOut_layer ) );
-stubOut.DataValid <= ToBoolean( stubOut_valid );
+        -- for debug only. Correct conversion must be calculated 
+        llrTrack.inv2R := signed( qOverPt );
+        llrTrack.phi0 := signed( phiT );
+        llrTrack.tanL := signed( cot );
+        llrTrack.z0 := signed( zT );
+
+        ldrTrack := ToDrTrack( llrTrack );
+
+        lrTrackOut <= llrTrack;
+        drTrackOut <= ldrTrack;
+
+    end if;
+end process;
 
 END;
